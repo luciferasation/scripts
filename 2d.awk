@@ -125,7 +125,7 @@ for (l = 1; l <= xnum; l++)
 #I arbitrarily set the unexplored region as being explored 1/1000000 times the 
 #mostly visted region at the convenience of plotting.
 if (minnum / maxnum <= 0.000001)
-    printf("For %s, the minimal number in a bin is %d and the maximal number in a bin is %d. Adjust the settings to make the ratio of the minimal number to the maximal number higher than 1/1000000. You can modify xnum and ynum in this script first.", FILENAME, minnum, maxnum)
+    printf("For %s, the minimal number in a bin is %d and the maximal number in a bin is %d. Adjust the settings to make the ratio of the minimal number to the maximal number higher than 1/1000000. You can increase xnum and ynum in this script first.", FILENAME, minnum, maxnum)
 else
 {
     for (u = 1; u <= xnum; u++)
