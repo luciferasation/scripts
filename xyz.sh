@@ -41,7 +41,7 @@ if (test -a ./$log) then
 #Use degree of freedom to determine the number of atoms.
     num_atom=`grep --max-count=1 "^ Deg. of freedom \{1,\}[1-9][0-9]\{1,\}$\|^ Deg. of freedom \{1,\}[0-9]$" ./$log | awk 'BEGIN { FS = " "} { printf("%d\n", ($4-$4%3)/3+2) }'`
     printf "For %s, there are %d atoms.\n" "$log" "$num_atom"
-    bohr2angstrom=0.529177249
+    bohr2angstrom=0.5291772083
     atom=(`grep --max-count=1 --after-context=$num_atom "^ Charge = \{1,\}[0-9] \{1,\}Multiplicity = \{1,\}[0-9]$" ./$log | awk 'BEGIN { FS = " "} { if($1!="Charge") print $1 }'`)
     grep --no-group-separator --after-context=$(($num_atom + 8)) "^ Summary information for step \{1,\}[1-9][0-9]\{0,\}$" ./$log | awk -f xyz.awk -M -v a="${atom[*]}" b2a="$bohr2angstrom" > $target.xyz
     exit 0
