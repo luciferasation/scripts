@@ -1,6 +1,13 @@
 # Usage: gnuplot 2d-eps.plt
-# On Windows you can just double click. Tis script is for plotting 2D free ener-
-# gy landscape.
+# On Windows you can just double click. This script is for plotting 2D free ene-
+# rgy landscape. Based on your data, please adjust cbrange. The lower bound of 
+# cbrange should be the lowest free energy value, usually zero. It is my perso-
+# nal advice that you should set the higher bound of cbrange between the free e-
+# nergy value of unvisited regions and the highest free energy value of visited 
+# regions. The free energy value of unvisited regions is usually the highest va-
+# lue in the third column and can be the same in data from different sources. 
+# The highest free energy value of visited regions is usually the second highest
+# value in the third column.
 set terminal postscript eps color rounded enhanced "Helvetica" 18 size 3in, 3in
 set terminal postscript eps color solid
 set size square
