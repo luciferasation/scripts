@@ -18,15 +18,15 @@ num_atom = split(a,atom);
     s = substr($4,m + 1,1);
     j1 = substr($4,m + 2,1);
     j2 = substr($4,m + 3);
-    if(j2 > 9)
+    if (j2 > 9)
     {
         printf("\nERROR1!\n");
         exit 1;
     }
     j2 = j1 * 10 + j2;
-    if(s == "+")
+    if (s == "+")
         j = j * (10 ** j2);
-    else if(s == "-")
+    else if (s == "-")
         j = j / (10 ** j2);
     else
     {
@@ -36,7 +36,7 @@ num_atom = split(a,atom);
     printf("total angular momentum: %f h-bar\n", j);
 }
 /^ I= / {
-    if($2 > num_atom)
+    if ($2 > num_atom)
     {
         printf("\nERROR3!\n");
         exit 1;
@@ -56,7 +56,7 @@ num_atom = split(a,atom);
     x2 = substr($4,xm + 3);
     y2 = substr($6,ym + 3);
     z2 = substr($8,zm + 3);
-    if(x2 > 9 || y2 > 9 || z2 > 9)
+    if (x2 > 9 || y2 > 9 || z2 > 9)
     {
         printf("\nERROR4!\n");
         exit 1;
@@ -64,27 +64,27 @@ num_atom = split(a,atom);
     x2 = x1 * 10 + x2;
     y2 = y1 * 10 + y2;
     z2 = z1 * 10 + z2;
-    if(xs == "+")
+    if (xs == "+")
         x = b2a * x * (10 ** x2);
-    else if(xs == "-")
+    else if (xs == "-")
         x = b2a * x / (10 ** x2);
     else
     {
         printf("\nERROR5!\n");
         exit 1;
     }
-    if(ys == "+")
+    if (ys == "+")
         y = b2a * y * (10 ** y2);
-    else if(ys == "-")
+    else if (ys == "-")
         y = b2a * y / (10 ** y2);
     else
     {
         printf("\nERROR6!\n");
         exit 1;
     }
-    if(zs == "+")
+    if (zs == "+")
         z = b2a * z * (10 ** z2);
-    else if(zs == "-")
+    else if (zs == "-")
         z = b2a * z / (10 ** z2);
     else
     {
