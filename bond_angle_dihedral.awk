@@ -9,46 +9,46 @@ numBond = numBond/2;
 numAngle = numAngle/3;
 numDihedral = numDihedral/4;
 numTpa = numTpa/6;
-for(i=1;i<=numBond;i++)
+for (i=1;i<=numBond;i++)
 {
-    for(j=1;j<=2;j++)
+    for (j=1;j<=2;j++)
         Bond[i,j] = bond[2*(i-1)+j];
     printf("%s%d-%s%d ", atom[Bond[i,1]], Bond[i,1], atom[Bond[i,2]], Bond[i,2]);
 }
-for(i=1;i<=numAngle;i++)
+for (i=1;i<=numAngle;i++)
 {
-    for(j=1;j<=3;j++)
+    for (j=1;j<=3;j++)
         Angle[i,j] = angle[3*(i-1)+j];
     printf("%s%d-%s%d-%s%d ", atom[Angle[i,1]], Angle[i,1], atom[Angle[i,2]], Angle[i,2], atom[Angle[i,3]], Angle[i,3]);
 }
-for(i=1;i<=numDihedral;i++)
+for (i=1;i<=numDihedral;i++)
 {
-    for(j=1;j<=4;j++)
+    for (j=1;j<=4;j++)
         Dihedral[i,j] = dihedral[4*(i-1)+j];
     printf("%s%d-%s%d-%s%d-%s%d ", atom[Dihedral[i,1]], Dihedral[i,1], atom[Dihedral[i,2]], Dihedral[i,2], atom[Dihedral[i,3]], Dihedral[i,3], atom[Dihedral[i,4]], Dihedral[i,4]);
 }
-for(i=1;i<=numTpa;i++)
+for (i=1;i<=numTpa;i++)
 {
-    for(j=1;j<=6;j++)
+    for (j=1;j<=6;j++)
         Tpa[i,j] = tpa[6*(i-1)+j];
     printf("%s%d-%s%d-%s%d-%s%d-%s%d-%s%d ", atom[Tpa[i,1]], Tpa[i,1], atom[Tpa[i,2]], Tpa[i,2], atom[Tpa[i,3]], Tpa[i,3], atom[Tpa[i,4]], Tpa[i,4], atom[Tpa[i,5]], Tpa[i,5], atom[Tpa[i,6]], Tpa[i,6]);
 }
 printf("\n");
 }
 {
-    for(i=1;i<=numAtom;i++)
+    for (i=1;i<=numAtom;i++)
     {
         Atom[i,1] = $(4*i-2);
         Atom[i,2] = $(4*i-1);
         Atom[i,3] = $(4*i);
     }
-    for(i=1;i<=numBond;i++)
+    for (i=1;i<=numBond;i++)
         printf("%.3f ", fbond(Bond[i,1],Bond[i,2]));
-    for(i=1;i<=numAngle;i++)
+    for (i=1;i<=numAngle;i++)
         printf("%.1f ", fangle(Angle[i,1],Angle[i,2],Angle[i,3]));
-    for(i=1;i<=numDihedral;i++)
+    for (i=1;i<=numDihedral;i++)
         printf("%.1f ", fdihedral(Dihedral[i,1],Dihedral[i,2],Dihedral[i,3],Dihedral[i,4]));
-    for(i=1;i<=numTpa;i++)
+    for (i=1;i<=numTpa;i++)
         printf("%.1f ", ftwoplaneangle(Tpa[i,1],Tpa[i,2],Tpa[i,3],Tpa[i,4],Tpa[i,5],Tpa[i,6]));
     printf("\n");
 }
