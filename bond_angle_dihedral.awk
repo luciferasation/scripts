@@ -75,7 +75,7 @@ function fangle(a1,a2,a3,    x1,y1,z1,x2,y2,z2,x3,y3,z3,cosangle)
     y3 = Atom[a3,2];
     z3 = Atom[a3,3];
     cosangle = ((x1-x2)*(x3-x2)+(y1-y2)*(y3-y2)+(z1-z2)*(z3-z2))/sqrt(((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)+(z1-z2)*(z1-z2))*((x3-x2)*(x3-x2)+(y3-y2)*(y3-y2)+(z3-z2)*(z3-z2)));
-    return 57.29578*atan2(sqrt(1-cosangle*cosangle),cosangle);
+    return 57.29577951*atan2(sqrt(1-cosangle*cosangle),cosangle);
 }
 #The units of the results given by function fdihedral are in degrees.
 function fdihedral(d1,d2,d3,d4,    x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,norm1,x5,y5,z5,norm2,x6,y6,z6)
@@ -100,7 +100,7 @@ function fdihedral(d1,d2,d3,d4,    x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,norm1,x5,
     x6 = (y5*(z3-z2)-(y3-y2)*z5)/norm2;
     y6 = (z5*(x3-x2)-(z3-z2)*x5)/norm2;
     z6 = (x5*(y3-y2)-(x3-x2)*y5)/norm2;
-    return -57.29578*atan2(x6*(y2*(z3-z4)+y3*(z4-z2)+y4*(z2-z3))+y6*(z2*(x3-x4)+z3*(x4-x2)+z4*(x2-x3))+z6*(x2*(y3-y4)+x3*(y4-y2)+x4*(y2-y3)),x5*(y2*(z3-z4)+y3*(z4-z2)+y4*(z2-z3))+y5*(z2*(x3-x4)+z3*(x4-x2)+z4*(x2-x3))+z5*(x2*(y3-y4)+x3*(y4-y2)+x4*(y2-y3)));
+    return -57.29577951*atan2(x6*(y2*(z3-z4)+y3*(z4-z2)+y4*(z2-z3))+y6*(z2*(x3-x4)+z3*(x4-x2)+z4*(x2-x3))+z6*(x2*(y3-y4)+x3*(y4-y2)+x4*(y2-y3)),x5*(y2*(z3-z4)+y3*(z4-z2)+y4*(z2-z3))+y5*(z2*(x3-x4)+z3*(x4-x2)+z4*(x2-x3))+z5*(x2*(y3-y4)+x3*(y4-y2)+x4*(y2-y3)));
 }
 #The units of the results given by function ftwoplaneangle are in degrees.
 function ftwoplaneangle(t1,t2,t3,t4,t5,t6,    x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4,x5,y5,z5,x6,y6,z6,x7,y7,z7,x8,y8,z8,costwoplaneangle)
@@ -130,5 +130,5 @@ function ftwoplaneangle(t1,t2,t3,t4,t5,t6,    x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z
     y8 = z4*(x6-x5)+z5*(x4-x6)+z6*(x5-x4);
     z8 = x4*(y6-y5)+x5*(y4-y6)+x6*(y5-y4);
     costwoplaneangle = (x7*x8+y7*y8+z7*z8)/sqrt((x7*x7+y7*y7+z7*z7)*(x8*x8+y8*y8+z8*z8));
-    return 57.29578*atan2(sqrt(1-costwoplaneangle*costwoplaneangle),costwoplaneangle);
+    return 57.29577951*atan2(sqrt(1-costwoplaneangle*costwoplaneangle),costwoplaneangle);
 }
