@@ -17,9 +17,9 @@
 # of plotting, MaxFreeEnergy should be set an integer number because MinFreeEner
 # gy is set at zero and FreeEnergyIncrement is set as 1 for plotting contour li-
 # nes.
-MinFreeEnergy=0
-MaxFreeEnergy=6
-FreeEnergyIncrement=1
+MinFreeEnergy=0.
+MaxFreeEnergy=6.
+FreeEnergyIncrement=1.
 set terminal pngcairo
 set size square
 
@@ -30,8 +30,8 @@ set key top right samplen 1.0
 unset key
 
 set offset 0,0,0,0
-set style increment user
-do for [i=1:18] { set style line i lc rgb "black"}
+do for [i=3:(MaxFreeEnergy-MinFreeEnergy+2)] { set style line i linecolor rgb 'black' linetype 1}
+set style increment userstyles
 set cntrparam levels incremental MinFreeEnergy+FreeEnergyIncrement,FreeEnergyIncrement,MaxFreeEnergy-FreeEnergyIncrement
 
 set yrange [-180:180]
@@ -54,7 +54,7 @@ set cbtics 1
 set cblabel "kcal/mol" rotate by 0 offset -4,9.5 font "Helvetica.20"
 set palette defined (0 "white", 1 "blue", 2 "yellow", 3 "red")
 
-set output "0.png"
+set output "pmf.png"
 
-splot "pmf0.dat"
+splot "pmf.dat"
 
