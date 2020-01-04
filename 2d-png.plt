@@ -1,13 +1,25 @@
 # Usage: gnuplot 2d-png.plt
 # On Windows you can just double click. This script is for plotting 2D free ene-
-# rgy landscape. Based on your data, please adjust cbrange. The lower bound of 
-# cbrange should be the lowest free energy value, usually zero. It is my perso-
-# nal advice that you should set the higher bound of cbrange between the free e-
-# nergy value of unvisited regions and the highest free energy value of visited 
-# regions. The free energy value of unvisited regions is usually the highest va-
-# lue in the third column and can be the same in data from different sources. 
-# The highest free energy value of visited regions is usually the second highest
-# value in the third column.
+# rgy landscape. The script was initially designed for 2 dihedral angles as col-
+# lective variables. Based on your data, please adjust the values of MinFreeEner
+# gy and MaxFreeEnergy respectively. Usually, MinFreeEnergy is set at zero. If 
+# you did a normal molecular dynamics simulation, I personally suggest that MaxF
+# reeEnergy be set between the free energy value of unvisited regions and the 
+# highest free energy value of visited regions. The free energy value of unvi-
+# sited regions is usually the highest value in the third column and can appear 
+# multiple times in a file. The highest free energy value of visited regions is 
+# usually the second highest value in the third column, if the highest value in 
+# the third column appears multiple times. However, if you used certain enhanced
+# sampling technique like metadynamics, adaptive biasing force, etc., you might 
+# find that the highest value of the third column only appears once. In this ca-
+# se, there is no unvisited region. You should set MaxFreeEnergy right at or a 
+# little bit higher than the highest value of the third column. For convenience 
+# of plotting, MaxFreeEnergy should be set an integer number because MinFreeEner
+# gy is set at zero and FreeEnergyIncrement is set as 1 for plotting contour li-
+# nes.
+MinFreeEnergy=0
+MaxFreeEnergy=6
+FreeEnergyIncrement=1
 set terminal pngcairo
 set size square
 
@@ -18,13 +30,9 @@ set key top right samplen 1.0
 unset key
 
 set offset 0,0,0,0
-set style line 11 lc rgb '#FF0000' lt 1 lw 3
-set style line 12 lc rgb '#0000FF' lt 1 lw 3
-set style line 13 lc rgb '#808000' lt 1 lw 3
-set style line 14 lc rgb '#000000' lt 1 lw 3
-set style line 15 lc rgb '#00FFFF' lt 1 lw 3
-set style line 16 lc rgb '#707070' lt 1 lw 3
-set style line 17 lc rgb '#909090' lt 1 lw 3
+set style increment user
+do for [i=1:18] { set style line i lc rgb "black"}
+set cntrparam levels incremental MinFreeEnergy+FreeEnergyIncrement,FreeEnergyIncrement,MaxFreeEnergy-FreeEnergyIncrement
 
 set yrange [-180:180]
 set xrange [-180:180]
@@ -41,7 +49,7 @@ set pm3d explicit
 set pm3d interpolate 0,0
 set contour base
 set colorbox vertical user size 0.04,0.6 origin 0.78,0.2
-set cbrange [0:6]
+set cbrange [MinFreeEnergy:MaxFreeEnergy]
 set cbtics 1
 set cblabel "kcal/mol" rotate by 0 offset -4,9.5 font "Helvetica.20"
 set palette defined (0 "white", 1 "blue", 2 "yellow", 3 "red")
