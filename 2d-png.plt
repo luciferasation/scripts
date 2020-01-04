@@ -30,9 +30,6 @@ set key top right samplen 1.0
 unset key
 
 set offset 0,0,0,0
-do for [i=3:(MaxFreeEnergy-MinFreeEnergy+2)] { set style line i linecolor rgb 'black' linetype 1}
-set style increment userstyles
-set cntrparam levels incremental MinFreeEnergy+FreeEnergyIncrement,FreeEnergyIncrement,MaxFreeEnergy-FreeEnergyIncrement
 
 set yrange [-180:180]
 set xrange [-180:180]
@@ -52,6 +49,7 @@ set colorbox vertical user size 0.04,0.6 origin 0.78,0.2
 set cbrange [MinFreeEnergy:MaxFreeEnergy]
 set cbtics 1
 set cblabel "kcal/mol" rotate by 0 offset -4,9.5 font "Helvetica.20"
+set cntrparam levels incremental MinFreeEnergy+FreeEnergyIncrement,FreeEnergyIncrement,MaxFreeEnergy-FreeEnergyIncrement
 set palette defined (0 "white", 1 "blue", 2 "yellow", 3 "red")
 
 set output "pmf.png"
