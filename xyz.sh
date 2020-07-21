@@ -26,7 +26,7 @@ help() {
     awk -F'### ' '/^###/ { print $2 }' "$0"
 }
 
-if [[ $# == 0 || "$1" == "-h" || "$1" == "--help" ]]; then
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
     help
     exit 1
 fi
@@ -39,6 +39,8 @@ fi
 if [ ${#1} -gt 0 ]; then
 log=$1
 else
+    help
+    echo "The default setting is interactive usage and you have started it."
     echo "Please input the filename of Gaussian's BOMD output."
     read log
 fi
