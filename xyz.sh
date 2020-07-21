@@ -20,8 +20,8 @@
 ### outputs in the directory are not produced by BOMD jobs, this script will 
 ### fail on those Gaussian outputs and you may need to delete the wrongly gene-
 ### rated xyz-format files manually.
-### Batch Mode: find . -maxdepth 1 -name "*.out" -exec sh {} \;
-### Batch Mode: find . -maxdepth 1 -name "*.log" -exec sh {} \;
+### Batch Mode: find . -maxdepth 1 -name "*.out" -exec sh xyz.sh {} \;
+### Batch Mode: find . -maxdepth 1 -name "*.log" -exec sh xyz.sh {} \;
 help() {
     awk -F'### ' '/^###/ { print $2 }' "$0"
 }
