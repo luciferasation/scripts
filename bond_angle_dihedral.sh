@@ -1,11 +1,22 @@
 #!/bin/bash
-#This script can extract bonds, angles, and dihedrals from xyz-format files. The
-#output is pure text and can be easily used by other programs, such as gnuplot. 
-#This script relies on an awk script written by me: bond_angle_dihedral.awk. The
-#awk script should be put in the same directory as this script. Also, the files 
-#to be processed should be put in the same directory. This script processes each
-#file with a .xyz file name extension in the current directory.
-#Usage: sh bond_angle_dihedral.sh
+### This script can extract bonds, angles, and dihedrals from xyz-format files. 
+### The output is pure text and can be easily used by other programs, such as 
+### gnuplot. This script relies on an awk script written by me: 
+### bond_angle_dihedral.awk. The awk script should be put in the same directory 
+### as this script. Also, the files to be processed should be put in the same 
+### directory. This script processes each file with a .xyz file name extension 
+### in the current directory.
+### Usage: sh bond_angle_dihedral.sh
+
+help() {
+    awk -F'### ' '/^###/ { print $2 }' "$0"
+}
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    help
+    exit 1
+fi
+
 test -s ./bond_angle_dihedral.awk
 if [ $? -ne 0 ]; then
     echo "Missing bond_angle_dihedral.awk!"
