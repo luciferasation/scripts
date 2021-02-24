@@ -73,5 +73,5 @@ do
             continue
         fi
     fi
-    awk -f $script_dir/pyramidalization.awk -v p="$pg" $file $file > $target.pa
+    awk -f $script_dir/pyramidalization.awk -v p="$pg" $file $file | column -t > $target.pa
 done
