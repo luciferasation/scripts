@@ -79,11 +79,13 @@ function cosangle(a1,a2,a3,    x1,y1,z1,x2,y2,z2,x3,y3,z3)
 }
 
 # The unit of the results given by function thetap is degree.
-function thetap(a1,a2,a3,a4,    cosalpha,cosbeta,cosgamma,sinthetap)
+function thetap(a1,a2,a3,a4,    cosalpha,cosbeta,cosgamma,squaresinthetap)
 {
     cosalpha = cosangle(a2,a1,a3);
     cosbeta = cosangle(a3,a1,a4);
     cosgamma = cosangle(a4,a1,a2);
-    sinthetap = sqrt((2*cosalpha*cosbeta*cosgamma-cosalpha*cosalpha-cosbeta*cosbeta-cosgamma*cosgamma+1)/(-cosalpha*cosalpha-cosbeta*cosbeta-cosgamma*cosgamma+2*(cosalpha*cosbeta+cosbeta*cosgamma+cosgamma*cosalpha)-2*(cosalpha+cosbeta+cosgamma)+3));
-    return 57.29577951*atan2(sinthetap,sqrt(1-sinthetap*sinthetap));
+    squaresinthetap = (2*cosalpha*cosbeta*cosgamma-cosalpha*cosalpha-cosbeta*cosbeta-cosgamma*cosgamma+1)/(-cosalpha*cosalpha-cosbeta*cosbeta-cosgamma*cosgamma+2*(cosalpha*cosbeta+cosbeta*cosgamma+cosgamma*cosalpha)-2*(cosalpha+cosbeta+cosgamma)+3);
+    if (squaresinthetap < 1e-6 && squaresinthetap > -1e-6)
+        squaresinthetap = 0;
+    return 57.29577951*atan2(sqrt(squaresinthetap),sqrt(1-squaresinthetap));
 }
