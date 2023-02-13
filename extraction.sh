@@ -2,9 +2,11 @@
 ### This script can extract bonds, angles, and dihedrals from xyz-format files. 
 ### The output is pure text and can be easily used by other programs, such as 
 ### gnuplot. This script relies on an awk script written by me: extraction.awk.
-### The awk script should be put in the same directory as this script. Also, the
-### files to be processed should be put in the same directory. This script pro-
-### cesses each file with a .xyz file name extension in the working directory.
+### The awk script should be put in the same directory as this script. The awk 
+### script relies on certain feature of GNU awk, which is missing in the default
+### awk in MacOS. Also, the files to be processed should be put in the same di-
+### rectory. This script processes each file with a .xyz file name extension in 
+### the working directory.
 ### Usage: sh extraction.sh
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
