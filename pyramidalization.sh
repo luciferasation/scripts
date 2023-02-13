@@ -2,9 +2,12 @@
 ### This script can extract pyramidalization angles from xyz-format files. The 
 ### output is pure text and can be easily used by other programs, such as 
 ### gnuplot. This script relies on an awk script written by me: pyramidalization
-### .awk. The awk script should be put in the same directory as this script. 
-### This script processes each file with a .xyz file name extension in the wor-
-### king directory. The definition of pyramidalization angle can be found at 
+### .awk. The awk script should be put in the same directory as this script. The
+### awk script relies on certain feature of GNU awk, which is missing in the de-
+### fault awk in MacOS. Also, the files to be processed should be put in the sa-
+### me directory. This script processes each file with a .xyz file name exten-
+### sion in the working directory. The definition of pyramidalization angle can 
+### be found at 
 ### J. Comput. Chem., 33: 2173-2179. https://doi.org/10.1002/jcc.23053
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
